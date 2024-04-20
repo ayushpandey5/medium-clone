@@ -1,7 +1,5 @@
-function Home() {
-  return (
-    <div>Home</div>
-  )
-}
+import React from "react"
 
-export {Home}
+export const Home = () => {
+  return <div></div>
+}

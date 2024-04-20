@@ -1,7 +1,5 @@
-function Blog() {
-  return (
-    <div>Blog</div>
-  )
-}
+import React from "react"
 
-export {Blog}
+export const Blog = () => {
+  return <div></div>
+}

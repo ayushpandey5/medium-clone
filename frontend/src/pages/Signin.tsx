@@ -1,7 +1,5 @@
-function Signin() {
-  return (
-    <div>Signin</div>
-  )
-}
+import React from "react"
 
-export {Signin}
+export const Signin = () => {
+  return <div></div>
+}
