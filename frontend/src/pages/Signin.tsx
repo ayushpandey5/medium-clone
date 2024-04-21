@@ -75,9 +75,6 @@ export const Signin = () => {
                   <FormControl>
                     <Input type="password" placeholder="Your password" {...field} />
                   </FormControl>
-                  <FormDescription>
-                  Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 symbol
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
