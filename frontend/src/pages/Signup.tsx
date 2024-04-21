@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link } from "react-router-dom"
-import { Signin } from "./Signin"
-
 
 export const Signup = () => {
     return (
@@ -23,7 +21,7 @@ export const Signup = () => {
                 <Input
                   className="border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-primary focus:ring-primary"
                   id="username"
-                  placeholder="JohnDoe123"
+                  placeholder="JohnDoe"
                   required
                   type="text"
                 />
@@ -57,7 +55,7 @@ export const Signup = () => {
             </div>
             <div className="text-center text-gray-500 dark:text-gray-400">
               Already have an account?
-              <Link className="font-medium hover:text-gray-700 dark:hover:text-gray-300" to={<Signin/>}>
+              <Link className="font-medium hover:text-gray-700 dark:hover:text-gray-300" to={'#'}>
                 Sign In
               </Link>
             </div>
