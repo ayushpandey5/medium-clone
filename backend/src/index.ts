@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import {user} from './routes/user'
 import {blog} from './routes/blog'
 import { decode } from 'hono/jwt';
-import { PrismaClient } from '@prisma/client/edge';
+import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate';
 
 type Bindings = {

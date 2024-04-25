@@ -2,11 +2,12 @@
 # MY_VAR = "my-variable"
 
 name = "medium-backend"
-compatibility_date = "2024-04-13"
+compatibility_date = "2024-04-25"
 
 [vars]
-DATABASE_URL=
-JWT_KEY=
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiYmQ3ZWMxZTItMDAzNy00ODlmLWFmNDctNTM4YmQwNzU0MTYxIiwidGVuYW50X2lkIjoiZTg0ODgxNjI4MTc4MzFlMjE2OTZmNDlmYWJhNGQ4MThjZTdiNjg4MWM5MGZiOGM4NzhiODhhYmEwOTM4NWQ4MyIsImludGVybmFsX3NlY3JldCI6ImJkMmViMWMwLTZiNGQtNGFkNy04MjI0LWI5MzI4MDFjN2VmZiJ9.-U9thVF-8m6PsbKbZ0B_xYDb25Vp1ddZik5h_p1okTY"
+JWT_KEY="QPZMal@123"
+DIRECT_DATABASE_URL="postgresql://postgres:QPZMal@123@3.27.7.37:5432/postgres?schema=public"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
