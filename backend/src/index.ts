@@ -2,8 +2,10 @@ import { Hono } from 'hono'
 import {user} from './routes/user'
 import {blog} from './routes/blog'
 import { decode } from 'hono/jwt';
+import { cors } from 'hono/cors'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate';
+
 
 type Bindings = {
   DATABASE_URL: string,
@@ -16,6 +18,7 @@ type Variables = {
 
 const app = new Hono<{Bindings: Bindings, Variables: Variables}>().basePath('api/v1');
 
+app.use('/*', cors())
 app.use('*', async(c,next) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,

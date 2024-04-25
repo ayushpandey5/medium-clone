@@ -12,7 +12,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SignUpSchema } from "@/utils/types"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { useState } from "react"
+import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
+import { Loader2 } from "lucide-react"
 
 export const Signup = () => {
   const form = useForm<z.infer<typeof SignUpSchema>>({
@@ -23,8 +28,24 @@ export const Signup = () => {
       password: ""
     },
   })
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  function onSubmit(values: z.infer<typeof SignUpSchema>) {
+  async function onSubmit(values: z.infer<typeof SignUpSchema>) {
+    setLoading(true)
+    const res = await axios.post("https://medium-backend.ayushpandey-dev.workers.dev/api/v1/user/signup", {
+      username: values.username,
+      email: values.email,
+      password: values.password
+    })
+
+    if(res.data.success == "failed"){
+      return toast("User Already Exists, Try to Log in")
+    } else {
+      navigate('/signin')
+    }
+    setLoading(false)
+    console.log(res)
     console.log(values)
   }
     return (
@@ -77,7 +98,10 @@ export const Signup = () => {
                         </FormItem>
                       )}
                     />
-                <Button className="w-full" type="submit">Submit</Button>
+                <Button className="w-full" type="submit">
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />: null}
+                  Submit
+                </Button>
                 </form>
               </Form> 
             <div className="text-center text-gray-500 dark:text-gray-400">
@@ -87,6 +111,7 @@ export const Signup = () => {
               </Link>
             </div>
           </div>
+          <Toaster />
         </div>
       )
 }
