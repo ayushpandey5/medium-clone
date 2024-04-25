@@ -14,19 +14,30 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SignInSchema } from "@/utils/types"
 import { Link } from "react-router-dom"
+import axios from "axios"
+import { toast } from "sonner"
+import { Toaster } from "@/components/ui/sonner"
 
 
 export const Signin = () => {
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: ""
     },
   })
-    function onSubmit(values: z.infer<typeof SignInSchema>) {
-      console.log(values)
+    async function onSubmit(values: z.infer<typeof SignInSchema>) {
+      const res = await axios.post("https://medium-backend.ayushpandey-dev.workers.dev/api/v1/user/signin", {
+        email: values.email,
+        password: values.password
+      })
+      if(res.data.error == "No user found"){
+        toast("User doesn't exist")
+      }
+      if(res.data.success){
+        localStorage.setItem("token", res.data.success.split(" ")[0])
+      }
     }
 
     return (
@@ -76,6 +87,7 @@ export const Signin = () => {
               Sign Up
             </Link>
         </div>
+        <Toaster />
       </div>
       </div>
   )
