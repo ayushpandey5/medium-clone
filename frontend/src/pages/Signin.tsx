@@ -13,13 +13,20 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SignInSchema } from "@/utils/types"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "sonner"
 import { Toaster } from "@/components/ui/sonner"
+import { useRecoilState } from "recoil"
+import { userTokenAtom } from "@/store/store"
+import { useState } from "react"
+import { Loader2 } from "lucide-react"
 
 
 export const Signin = () => {
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const [userTokenState, setUserTokenState] = useRecoilState(userTokenAtom)
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
@@ -28,15 +35,32 @@ export const Signin = () => {
     },
   })
     async function onSubmit(values: z.infer<typeof SignInSchema>) {
-      const res = await axios.post("https://medium-backend.ayushpandey-dev.workers.dev/api/v1/user/signin", {
-        email: values.email,
-        password: values.password
-      })
-      if(res.data.error == "No user found"){
-        toast("User doesn't exist")
-      }
-      if(res.data.success){
-        localStorage.setItem("token", res.data.success.split(" ")[0])
+      setLoading(true)
+      try {
+        const res = await axios.post("https://medium-backend.ayushpandey-dev.workers.dev/api/v1/user/signin", {
+          email: values.email,
+          password: values.password
+        })
+        if(res.data){
+          if(res.data.error == "Password is wrong"){
+            toast("Password in wrong, Try again")
+          }
+          if(res.data.error == "No user found"){
+            toast("No user data. Check your email")
+          }
+          if(res.data.success){
+            localStorage.setItem("token", res.data.success.split(" ")[0])
+            console.log(res.data.success.split(" ")[0])
+            navigate('/blogs')
+          }
+        } else {
+          console.log("Data Fetching error")
+          toast("Error Fetching Data")
+        }
+        setLoading(false)
+        console.log(res)
+      } catch (error) {
+        console.log(error)
       }
     }
 
@@ -78,7 +102,9 @@ export const Signin = () => {
                 </FormItem>
               )}
             />
-         <Button className="w-full" type="submit">Submit</Button>
+         <Button className="w-full" type="submit">
+          {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : null}
+          Submit</Button>
         </form>
       </Form>   
         <div className="text-center text-gray-500 dark:text-gray-400">
@@ -86,8 +112,8 @@ export const Signin = () => {
             <Link className="font-medium hover:text-gray-700 dark:hover:text-gray-300" to='/signup'>
               Sign Up
             </Link>
+            <Toaster />
         </div>
-        <Toaster />
       </div>
       </div>
   )
