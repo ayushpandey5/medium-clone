@@ -49,7 +49,9 @@ export const Signin = () => {
             toast("No user data. Check your email")
           }
           if(res.data.success){
-            localStorage.setItem("token", res.data.success.split(" ")[0])
+            const token = res.data.success.split(" ")[0]
+            localStorage.setItem("token", token)
+            setUserTokenState(token)
             console.log(res.data.success.split(" ")[0])
             navigate('/blogs')
           }
