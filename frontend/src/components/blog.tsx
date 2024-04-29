@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Card, CardContent, CardFooter} from "./ui/card"
+import blogImage from "../assets/bg.png"
 
 export const Blog = () => {
     return (
@@ -12,15 +13,12 @@ export const Blog = () => {
                 alt="Blog post image"
                 className="aspect-video overflow-hidden rounded-t-lg object-cover"
                 height={225}
-                src="/placeholder.svg"
+                src={blogImage}
                 width={400}
               />
             </Link>
             <CardContent>
               <div className="space-y-2">
-                <div className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium dark:bg-gray-800">
-                  Design
-                </div>
                 <h3 className="text-xl font-bold">
                   <Link to="#">Designing for the Future: Trends and Insights</Link>
                 </h3>
