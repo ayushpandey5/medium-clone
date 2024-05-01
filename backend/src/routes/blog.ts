@@ -18,7 +18,7 @@ const blog = new Hono<{
 
 blog.use('/*', async(c,next) => {
     try {
-    const token = c.req.header('Authorization')?.split(' ')[1] || "";
+    const token = c.req.header('Authorization') || "";
     const user = await verify(token, c.env.JWT_KEY);
     if(!user){
         return c.json({ error: "Unauthorized" }, 401);
@@ -28,7 +28,6 @@ blog.use('/*', async(c,next) => {
     } catch (error) {
         return c.json({ error: "No Token" }, 401);
     }
-    
 })
 
 blog.post('/', async(c) => {
