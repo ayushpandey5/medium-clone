@@ -7,3 +7,9 @@ export const SignUpSchema = z.object({
 })
 
 export const SignInSchema = SignUpSchema.omit({username: true})
+
+export const AddBlogSchema = z.object({
+  title: z.string().min(1, {message: "Please provide a title"}),
+  content: z.string(),
+  published: z.boolean(),
+})
