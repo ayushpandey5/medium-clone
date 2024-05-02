@@ -1,6 +1,6 @@
 import {useEffect, useState } from "react"
 import { Header } from "@/components/Header"
-import { Blog } from "@/components/Blog"
+import { Blog, SkeletonBlog } from "@/components/Blog"
 import axios from "axios"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
@@ -35,7 +35,9 @@ export const Blogs = () => {
     return (
         <div>
             <Header />
-            {laoding ? <>Loading...</> : blogs ? blogs.map((blog) => <Blog data={blog} key={blog.id} />) : null}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6 py-12 md:py-10">
+            {laoding ? <div>Loading...</div> : blogs ? blogs.map((blog) => <Blog data={blog} key={blog.id} />) : null}
+        </section>
             <Toaster />
         </div>
     )

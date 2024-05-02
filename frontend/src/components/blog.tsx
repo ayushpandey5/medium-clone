@@ -2,86 +2,55 @@ import { Link } from "react-router-dom"
 import { Card, CardContent, CardFooter} from "./ui/card"
 import blogImage from "../assets/bg.png"
 
-export const Blog = ({data}) => {
+export const Blog = ({ data, key }) => {
+    const toPath = `${data.id}`
     return (
-        <div>
-    <main className="container mx-auto px-4 py-8 md:px-6 lg:py-12">
-        <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <Link to="#">
-              <img
-                alt="Blog post image"
-                className="aspect-video overflow-hidden rounded-t-lg object-cover"
-                height={225}
-                src={blogImage}
-                width={400}
-              />
-            </Link>
-            <CardContent>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold">
-                  <Link to="#">{data.title}</Link>
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  {data.contents}
-                </p>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span>April 26, 2024</span>
-                </div>
-                <Link className="text-sm ml-2 bold italic font-medium text-gray-900 hover:underline dark:text-gray-50" to="#">
-                  Read more
-                </Link>
-              </div>
-            </CardFooter>
-          </Card>
+        <div className="bg-white rounded-lg overflow-hidden shadow-md dark:bg-gray-950">
+        <img
+          alt="Blog Post Image"
+          className="w-full h-48 object-cover"
+          height="200"
+          src={blogImage}
+          style={{
+            aspectRatio: "400/200",
+            objectFit: "cover",
+          }}
+          width="400"
+        />
+        <div className="p-4">
+          <h3 className="text-xl font-bold mb-2">{data.title}</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">{data.content}</p>
+          <Link
+            className="inline-flex items-center justify-center h-9 px-4 rounded-md bg-gray-900 text-gray-50 font-medium transition-colors hover:bg-gray-900/90 focus:outline-none focus:ring-1 focus:ring-gray-950 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus:ring-gray-300" to={toPath}>
+            Read More
+          </Link>
         </div>
-      </main>
       </div>
-      )
-}
+    );
+  };
 
-export const SkeletonBlog = () => {
+  export const SingleBlog = ({ blog }) => {
     return (
-        <div>
-    <main className="container mx-auto px-4 py-8 md:px-6 lg:py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <Link to="#">
-              <img
-                alt="Blog post image"
-                className="aspect-video overflow-hidden rounded-t-lg object-cover"
-                height={225}
-                src={blogImage}
-                width={400}
-              />
-            </Link>
-            <CardContent>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold">
-                  <Link to="#">{data.title}</Link>
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  {data.contents}
-                </p>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span>April 26, 2024</span>
-                </div>
-                <Link className="text-sm ml-2 bold italic font-medium text-gray-900 hover:underline dark:text-gray-50" to="#">
-                  Read more
-                </Link>
-              </div>
-            </CardFooter>
-          </Card>
+        <div className="bg-white rounded-lg overflow-hidden shadow-md dark:bg-gray-950">
+        <img
+          alt="Blog Post Image"
+          className="w-full h-48 object-cover"
+          height="200"
+          src={blogImage}
+          style={{
+            aspectRatio: "400/200",
+            objectFit: "cover",
+          }}
+          width="400"
+        />
+        <div className="p-4">
+          <h3 className="text-xl font-bold mb-2">{data.title}</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">{data.content}</p>
+          <Link
+            className="inline-flex items-center justify-center h-9 px-4 rounded-md bg-gray-900 text-gray-50 font-medium transition-colors hover:bg-gray-900/90 focus:outline-none focus:ring-1 focus:ring-gray-950 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus:ring-gray-300" to={toPath}>
+            Read More
+          </Link>
         </div>
-      </main>
       </div>
-      )
-}
+    );
+  };
