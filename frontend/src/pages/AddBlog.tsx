@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import axios from "axios";
+import blogImage from "../assets/bg.png"
 import {
   Form,
   FormControl,
@@ -16,12 +17,10 @@ import {
 import { AddBlogSchema } from "@/utils/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { useState } from "react";
-import { error } from "console";
 
 export const AddBlog = () => {
     const [loading, setLoading] = useState(false)
@@ -63,6 +62,9 @@ export const AddBlog = () => {
       return (
         <div>
             <Header/>
+            <div>
+              <img src={blogImage} alt="blog_image" className="w-[100%] h-[250px] object-cover"/>
+            </div>
             <div className="flex justify-center">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[500px]">
