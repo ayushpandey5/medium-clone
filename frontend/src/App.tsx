@@ -6,6 +6,7 @@ import { Blogs } from './pages/Blogs'
 import { RecoilRoot } from 'recoil'
 import { PrivateRoute, AuthRoute } from './pages/PrivateRoute'
 import { AddBlog } from './pages/AddBlog'
+import { SingleBlog } from './pages/SingleBlog'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path='/blogs' element={<Blogs/>}/>
           <Route path='/addblog' element={<AddBlog/>}/>
+          <Route path="/blog/:id" element={<SingleBlog/>} />
         </Route>
         <Route element={<AuthRoute />}>
         <Route path='/signin' element={<Signin/>}/>
