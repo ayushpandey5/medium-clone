@@ -11,12 +11,17 @@ import { MyBlogs } from './pages/MyBlogs'
 
 
 function App() {
+  //dont do it like this, since I can guarantee the token is valid, 
+  //I could do this, but usually hit backend from a function check if user is valid
+  //Can use selector from recoil too.
+  const token = localStorage.getItem("token")
   return (
     <>
     <RecoilRoot>
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoute />}>
+          {token ? <Route path='/' element={<Blogs/>}/> : <Route path='/' element={<Signin/>}/>}
           <Route path='/blogs' element={<Blogs/>}/>
           <Route path='/addblog' element={<AddBlog/>}/>
           <Route path="/blog/:id" element={<SingleBlog/>} />
