@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export const Header = () => {
     return (
         <header className="flex items-center justify-between px-4 py-3 bg-white shadow-sm dark:bg-gray-950">
-      <Link className="flex items-center gap-2 font-semibold text-gray-900 dark:text-gray-50" to="#">
+      <Link className="flex items-center gap-2 font-semibold text-gray-900 dark:text-gray-50" to="/blogs">
         <PencilIcon className="h-6 w-6" />
         <span>Blog</span>
       </Link>
@@ -12,6 +12,11 @@ export const Header = () => {
         <Avatar>
           <AvatarFallback>AP</AvatarFallback>
         </Avatar>
+        <Link
+          className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+          to="/myblogs">
+          MyBlogs
+        </Link>
          <Link
           className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
           to="/signup" onClick={() => {

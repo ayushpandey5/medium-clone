@@ -32,7 +32,7 @@ async function loadFromDatabase({id}) {
     }
   }
 
-export const SingleBlog = ({blog}) => {
+export const SingleBlog = () => {
     const {id} = useParams()
     const [blogData, setBlogData] = useState(null)
     const [initialContent, setInitialContent] = useState<
