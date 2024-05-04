@@ -4,9 +4,10 @@ import { Blog, SkeletonBlog } from "@/components/Blog"
 import axios from "axios"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
+import { Loader2 } from "lucide-react"
 
 export const Blogs = () => {
-    const [laoding, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [blogs, setBlogs] = useState(null)
 
@@ -35,10 +36,16 @@ export const Blogs = () => {
     return (
         <div>
             <Header />
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6 py-12 md:py-10">
-            {laoding ? <div>Loading...</div> : blogs ? blogs.map((blog) => <Blog data={blog} key={blog.id} />) : null}
-        </section>
+            {loading ? (
+                <div className="flex justify-center items-center align-middle">
+                        <Loader2 className="mr-2 h-10 w-10 animate-spin"/>
+                    </div> 
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6 py-12 md:py-10">
+                        { blogs ? blogs.map((blog) => <Blog data={blog} key={blog.id} />) : null}
+                    </div>
+                )}
             <Toaster />
-        </div>
+            </div>
     )
 }

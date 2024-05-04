@@ -56,9 +56,6 @@ export const SingleBlog = () => {
         return BlockNoteEditor.create({ initialContent });
     }, [initialContent]);
     
-    if (editor === undefined) {
-        return <Loader2 className="mr-2 h-4 w-4 animate-spin justify-center align-middle"/>
-    }
     return (
         <div>
             <Header />
@@ -67,7 +64,7 @@ export const SingleBlog = () => {
             </div>
             <div className="flex flex-col align-middle justify-center m-10">
                 <h1 className="text-3xl bg-indigo-200 mb-5 rounded-lg justify-center text-center align-middle">{blogData ? (blogData as any).title : null}</h1>
-                <BlockNoteView editor={editor}/>
+                {editor ? <BlockNoteView editor={editor}/> : <div className="flex justify-center align-middle"><Loader2 className="mr-2 h-5 w-5 animate-spin"/></div>}
             </div>
             <Toaster />
         </div>
