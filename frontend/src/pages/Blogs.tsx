@@ -22,7 +22,6 @@ export const Blogs = () => {
                     }
                 });
                 if(res.data){
-                    console.log(res.data.data);
                     setBlogs(res.data.data)
                     setLoading(false)
                 }
