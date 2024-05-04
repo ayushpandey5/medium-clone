@@ -1,4 +1,4 @@
-import { Block, BlockNoteEditor, PartialBlock } from "@blocknote/core";
+import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
 import "@blocknote/core/fonts/inter.css";
 import { BlockNoteView } from "@blocknote/react";
 import "@blocknote/react/style.css";
@@ -11,7 +11,7 @@ import blogImage from '../assets/bg.png'
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 
-async function loadFromDatabase({id}) {
+async function loadFromDatabase({id}:any) {
     const blogId = id;
     const token = localStorage.getItem("token")
     try {
@@ -22,9 +22,6 @@ async function loadFromDatabase({id}) {
         })
         if(res.data){
             return res.data.data
-            // return res.data.data.title,storageString
-            //   ? (JSON.parse(storageString.content) as PartialBlock[])
-            //   : undefined;
         }
     } catch (error) {
         console.log(error)
@@ -45,8 +42,8 @@ export const SingleBlog = () => {
         toast("Blog fetched")
       setInitialContent(JSON.parse(content.content));
       setBlogData(content)
-    }).catch((e)=> {
-        toast("Error")
+    }).catch(()=> {
+        toast("Error",)
     });
   }, []);
     const editor = useMemo(() => {

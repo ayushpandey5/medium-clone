@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
-import { Card, CardHeader, CardFooter, CardTitle, CardContent} from "./ui/card"
 import blogImage from "../assets/bg.png"
 
-export const Blog = ({ data }) => {
+export const Blog = ({ data }:any) => {
     return (
         <div className="bg-white rounded-lg overflow-hidden shadow-md dark:bg-gray-950">
         <img

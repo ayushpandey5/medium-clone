@@ -4,7 +4,6 @@ import { z } from "zod"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "sonner"
 import { Toaster } from "@/components/ui/sonner"
-import { useRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 import { userTokenAtom } from "@/store/store"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
@@ -26,7 +25,7 @@ import { Loader2 } from "lucide-react"
 export const Signin = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const [userTokenState, setUserTokenState] = useRecoilState(userTokenAtom)
+  const setUserTokenState = useSetRecoilState(userTokenAtom)
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {

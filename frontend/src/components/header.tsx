@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 export const Header = () => {
     return (
@@ -34,7 +34,7 @@ export const Header = () => {
     )
 }
 
-function PencilIcon(props) {
+function PencilIcon(props:any) {
     return (
       <svg
         {...props}

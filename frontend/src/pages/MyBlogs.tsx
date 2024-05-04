@@ -28,7 +28,7 @@ export const MyBlogs =() => {
         <div>
         <Header />
         {blogs ? (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6 py-12 md:py-10">
-            {blogs.map((blog) => <Blog data={blog} key={blog.id} />)}
+            {blogs.map((blog: any) => <Blog data={blog} key={blog.id} />)}
             </div>) :(<div className="flex justify-center align-middle">
                         <Loader2 className="mr-2 h-10 w-10 animate-spin"/>
                     </div> )}
