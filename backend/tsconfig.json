@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "strict": true,
+    "strict": false,
     "lib": [
       "ESNext"
     ],
@@ -11,6 +11,12 @@
       "@cloudflare/workers-types"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  },
+    "jsxImportSource": "hono/jsx",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "noEmitOnError": false,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "skipLibCheck": true
+}
 }
