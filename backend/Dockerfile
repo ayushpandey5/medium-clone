@@ -8,7 +8,8 @@ RUN npm install
 RUN npx prisma generate
 # RUN npm run deploy
 # RUN npx prisma migrate dev
+# ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "dist/index.js"]
+CMD ["ts-node", "index.ts"]
